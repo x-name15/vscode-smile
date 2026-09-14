@@ -1,0 +1,34 @@
+asyncapi: "2.6.0"
+info:
+  title: Clean Notification Service
+  version: "1.0.0"
+
+channels:
+  user/signedup:
+    description: Fired when a user signs up
+    subscribe:
+      operationId: onUserSignedUp
+      message:
+        description: Contains the user details
+        payload:
+          type: object
+          properties:
+            userId:
+              type: string
+              description: The user identifier
+            email:
+              type: string
+              description: The user email address
+  order/created:
+    description: Fired when an order is created
+    publish:
+      operationId: onOrderCreated
+      message:
+        description: Contains the order details
+        payload:
+          type: object
+          properties:
+            orderId:
+              type: string
+            total:
+              type: number

@@ -1,0 +1,564 @@
+openapi: 3.0.0
+info:
+  title: Large API
+  version: 1.0.0
+paths:
+  /resource1:
+    get:
+      operationId: getResource1
+      summary: Get resource 1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /resource2:
+    get:
+      operationId: getResource2
+      summary: Get resource 2
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /resource3:
+    get:
+      operationId: getResource3
+      summary: Get resource 3
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /resource4:
+    get:
+      operationId: getResource4
+      summary: Get resource 4
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /resource5:
+    get:
+      operationId: getResource5
+      summary: Get resource 5
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /resource6:
+    get:
+      operationId: getResource6
+      summary: Get resource 6
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /resource7:
+    get:
+      operationId: getResource7
+      summary: Get resource 7
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /resource8:
+    get:
+      operationId: getResource8
+      summary: Get resource 8
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /resource9:
+    get:
+      operationId: getResource9
+      summary: Get resource 9
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /resource10:
+    get:
+      operationId: getResource10
+      summary: Get resource 10
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /resource11:
+    get:
+      operationId: getResource11
+      summary: Get resource 11
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /resource12:
+    get:
+      operationId: getResource12
+      summary: Get resource 12
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /resource13:
+    get:
+      operationId: getResource13
+      summary: Get resource 13
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /resource14:
+    get:
+      operationId: getResource14
+      summary: Get resource 14
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /resource15:
+    get:
+      operationId: getResource15
+      summary: Get resource 15
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /resource16:
+    get:
+      operationId: getResource16
+      summary: Get resource 16
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /resource17:
+    get:
+      operationId: getResource17
+      summary: Get resource 17
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /resource18:
+    get:
+      operationId: getResource18
+      summary: Get resource 18
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /resource19:
+    get:
+      operationId: getResource19
+      summary: Get resource 19
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /resource20:
+    get:
+      operationId: getResource20
+      summary: Get resource 20
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /resource21:
+    get:
+      operationId: getResource21
+      summary: Get resource 21
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /resource22:
+    get:
+      operationId: getResource22
+      summary: Get resource 22
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /resource23:
+    get:
+      operationId: getResource23
+      summary: Get resource 23
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /resource24:
+    get:
+      operationId: getResource24
+      summary: Get resource 24
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /resource25:
+    get:
+      operationId: getResource25
+      summary: Get resource 25
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /resource26:
+    get:
+      operationId: getResource26
+      summary: Get resource 26
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /resource27:
+    get:
+      operationId: getResource27
+      summary: Get resource 27
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /resource28:
+    get:
+      operationId: getResource28
+      summary: Get resource 28
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /resource29:
+    get:
+      operationId: getResource29
+      summary: Get resource 29
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /resource30:
+    get:
+      operationId: getResource30
+      summary: Get resource 30
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /resource31:
+    get:
+      operationId: getResource31
+      summary: Get resource 31
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /resource32:
+    get:
+      operationId: getResource32
+      summary: Get resource 32
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /resource33:
+    get:
+      operationId: getResource33
+      summary: Get resource 33
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /resource34:
+    get:
+      operationId: getResource34
+      summary: Get resource 34
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /resource35:
+    get:
+      operationId: getResource35
+      summary: Get resource 35
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /resource36:
+    get:
+      operationId: getResource36
+      summary: Get resource 36
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /resource37:
+    get:
+      operationId: getResource37
+      summary: Get resource 37
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /resource38:
+    get:
+      operationId: getResource38
+      summary: Get resource 38
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /resource39:
+    get:
+      operationId: getResource39
+      summary: Get resource 39
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /resource40:
+    get:
+      operationId: getResource40
+      summary: Get resource 40
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /resource41:
+    get:
+      operationId: getResource41
+      summary: Get resource 41
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /resource42:
+    get:
+      operationId: getResource42
+      summary: Get resource 42
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /resource43:
+    get:
+      operationId: getResource43
+      summary: Get resource 43
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /resource44:
+    get:
+      operationId: getResource44
+      summary: Get resource 44
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /resource45:
+    get:
+      operationId: getResource45
+      summary: Get resource 45
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /resource46:
+    get:
+      operationId: getResource46
+      summary: Get resource 46
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /resource47:
+    get:
+      operationId: getResource47
+      summary: Get resource 47
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /resource48:
+    get:
+      operationId: getResource48
+      summary: Get resource 48
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /resource49:
+    get:
+      operationId: getResource49
+      summary: Get resource 49
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /resource50:
+    get:
+      operationId: getResource50
+      summary: Get resource 50
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+components:
+  schemas:
+    Resource:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string

@@ -1,0 +1,16 @@
+type User {
+  id: ID!
+  name: String!
+  role: String @deprecated
+}
+
+enum UserStatus {
+  ACTIVE
+  INACTIVE
+  BANNED
+}
+
+type Query {
+  user(id: ID!): User
+  users: [User!]!
+}

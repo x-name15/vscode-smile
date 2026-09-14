@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package test;
+
+/* A clean service with all methods properly documented. */
+service GreeterClean {
+  /* Returns a greeting message for the given name. */
+  rpc SayHello (HelloRequest) returns (HelloReply) {}
+
+  /* Ends the session and returns a farewell message. */
+  rpc SayGoodbye (GoodbyeRequest) returns (GoodbyeReply) {}
+}
+
+/* Represents a hello request payload. */
+message HelloRequest {
+  string name = 1;
+}
+
+/* Represents a hello response payload. */
+message HelloReply {
+  string message = 1;
+}
+
+/* Represents a goodbye request payload. */
+message GoodbyeRequest {
+  string userId = 1;
+}
+
+/* Represents a goodbye response payload. */
+message GoodbyeReply {
+  string farewell = 1;
+}

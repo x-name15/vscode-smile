@@ -5,9 +5,9 @@ import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 
 describe("AsyncAPI Module Diagnostics", () => {
-  const cleanV2Path = resolve(import.meta.dirname, "../../smile/fixtures/sample-asyncapi-clean.yaml");
-  const cleanV3Path = resolve(import.meta.dirname, "../../smile/fixtures/sample-asyncapi-v3-clean.yaml");
-  const brokenPath = resolve(import.meta.dirname, "../../smile/fixtures/sample-asyncapi.yaml");
+  const cleanV2Path = resolve(import.meta.dirname, "fixtures/sample-asyncapi-clean.yaml");
+  const cleanV3Path = resolve(import.meta.dirname, "fixtures/sample-asyncapi-v3-clean.yaml");
+  const brokenPath = resolve(import.meta.dirname, "fixtures/sample-asyncapi.yaml");
 
   it("identifies clean AsyncAPI v2 and v3 specifications", async () => {
     const res2 = await lintSpec(cleanV2Path);

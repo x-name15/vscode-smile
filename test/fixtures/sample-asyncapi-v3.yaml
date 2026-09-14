@@ -1,0 +1,37 @@
+asyncapi: "3.0.0"
+info:
+  title: Broken Notification Service V3
+  version: "1.0.0"
+
+channels:
+  userSignedUp:
+    address: user/signedup
+    # Missing channel description
+    messages:
+      userSignedUpMessage:
+        # Missing message description
+        payload:
+          type: object
+          properties:
+            userId:
+              description: The user identifier
+              # Missing type — should trigger untyped-schema-property
+            email:
+              type: string
+
+  orderCreated:
+    address: order/created
+    description: Channel for order creation events
+
+operations:
+  onUserSignedUp:
+    action: receive
+    channel:
+      $ref: '#/channels/userSignedUp'
+    messages:
+      - $ref: '#/channels/userSignedUp/messages/userSignedUpMessage'
+  onOrderCreated:
+    action: send
+    channel:
+      $ref: '#/channels/orderCreated'
+    # Missing messages list entirely — should trigger missing-message

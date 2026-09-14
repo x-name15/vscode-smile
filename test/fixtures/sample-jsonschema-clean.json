@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "User",
+  "description": "A user object representing a registered account.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the user."
+    },
+    "name": {
+      "type": "string",
+      "description": "Full display name."
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Additional metadata attached to this user.",
+      "properties": {
+        "source": {
+          "type": "string",
+          "description": "Origin of the record (e.g. signup, import, sso)."
+        }
+      }
+    }
+  }
+}

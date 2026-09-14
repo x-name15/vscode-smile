@@ -1,0 +1,52 @@
+openapi: 3.0.3
+info:
+  title: Sample Broken API
+  version: 1.0.0
+paths:
+  /users:
+    get:
+      # Missing operationId on purpose
+      responses:
+        "200":
+          description: A list of users
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                    metadata:
+                      type: object
+                      properties:
+                        source:
+                          # Missing type on purpose — untyped-schema-property
+                          description: where the user came from
+    post:
+      # Missing operationId on purpose
+      # Missing responses on purpose
+  /users/{missing_id}:
+    get:
+      operationId: getPhantom
+      responses:
+        "200":
+          description: ok
+  /users/{id}:
+    get:
+      operationId: getUserById
+      # Missing responses on purpose
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+components:
+  schemas:
+    BrokenModel:
+      type: object
+      properties:
+        untypedField:
+          description: This field has no type

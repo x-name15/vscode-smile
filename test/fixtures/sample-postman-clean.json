@@ -1,0 +1,45 @@
+{
+  "info": {
+    "name": "Clean Postman Collection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Users",
+      "item": [
+        {
+          "name": "Get Users",
+          "request": {
+            "method": "GET",
+            "url": "https://api.example.com/users",
+            "description": "Returns a list of all registered users in the system."
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": { "method": "GET", "url": "https://api.example.com/users" },
+              "code": 200,
+              "body": "[{\"id\": \"1\", \"name\": \"John\"}]"
+            }
+          ]
+        },
+        {
+          "name": "Create User",
+          "request": {
+            "method": "POST",
+            "url": "https://api.example.com/users",
+            "description": "Creates a new user in the system."
+          },
+          "response": [
+            {
+              "name": "201 Created",
+              "originalRequest": { "method": "POST", "url": "https://api.example.com/users" },
+              "code": 201,
+              "body": "{\"id\": \"2\", \"name\": \"Jane\"}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

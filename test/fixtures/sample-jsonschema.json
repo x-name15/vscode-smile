@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier"
+    },
+    "name": {
+      "type": "string"
+    },
+    "score": {},
+    "tags": {
+      "type": "array"
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "source": {
+          "description": "Origin of the record"
+        }
+      }
+    }
+  }
+}

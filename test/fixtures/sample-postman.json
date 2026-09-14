@@ -1,0 +1,44 @@
+{
+  "info": {
+    "name": "Sample Postman Collection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Users",
+      "item": [
+        {
+          "name": "Get Users",
+          "request": {
+            "method": "GET",
+            "url": "https://api.example.com/users",
+            "description": "Gets all users"
+          },
+          "response": [
+            {
+              "name": "Success",
+              "originalRequest": {
+                "method": "GET",
+                "url": "https://api.example.com/users"
+              },
+              "code": 200,
+              "body": "[{\"id\": 1}]"
+            }
+          ]
+        },
+        {
+          "name": "Missing Description and Responses",
+          "request": {
+            "method": "POST",
+            "url": "https://api.example.com/users"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Empty Folder",
+      "item": []
+    }
+  ]
+}

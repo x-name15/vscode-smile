@@ -1,0 +1,315 @@
+asyncapi: 2.6.0
+info:
+  title: Large AsyncAPI
+  version: 1.0.0
+channels:
+  topic/resource1:
+    publish:
+      operationId: pubResource1
+      description: Publishes resource 1
+      message:
+        $ref: '#/components/messages/Resource'
+  topic/resource2:
+    publish:
+      operationId: pubResource2
+      description: Publishes resource 2
+      message:
+        $ref: '#/components/messages/Resource'
+  topic/resource3:
+    publish:
+      operationId: pubResource3
+      description: Publishes resource 3
+      message:
+        $ref: '#/components/messages/Resource'
+  topic/resource4:
+    publish:
+      operationId: pubResource4
+      description: Publishes resource 4
+      message:
+        $ref: '#/components/messages/Resource'
+  topic/resource5:
+    publish:
+      operationId: pubResource5
+      description: Publishes resource 5
+      message:
+        $ref: '#/components/messages/Resource'
+  topic/resource6:
+    publish:
+      operationId: pubResource6
+      description: Publishes resource 6
+      message:
+        $ref: '#/components/messages/Resource'
+  topic/resource7:
+    publish:
+      operationId: pubResource7
+      description: Publishes resource 7
+      message:
+        $ref: '#/components/messages/Resource'
+  topic/resource8:
+    publish:
+      operationId: pubResource8
+      description: Publishes resource 8
+      message:
+        $ref: '#/components/messages/Resource'
+  topic/resource9:
+    publish:
+      operationId: pubResource9
+      description: Publishes resource 9
+      message:
+        $ref: '#/components/messages/Resource'
+  topic/resource10:
+    publish:
+      operationId: pubResource10
+      description: Publishes resource 10
+      message:
+        $ref: '#/components/messages/Resource'
+  topic/resource11:
+    publish:
+      operationId: pubResource11
+      description: Publishes resource 11
+      message:
+        $ref: '#/components/messages/Resource'
+  topic/resource12:
+    publish:
+      operationId: pubResource12
+      description: Publishes resource 12
+      message:
+        $ref: '#/components/messages/Resource'
+  topic/resource13:
+    publish:
+      operationId: pubResource13
+      description: Publishes resource 13
+      message:
+        $ref: '#/components/messages/Resource'
+  topic/resource14:
+    publish:
+      operationId: pubResource14
+      description: Publishes resource 14
+      message:
+        $ref: '#/components/messages/Resource'
+  topic/resource15:
+    publish:
+      operationId: pubResource15
+      description: Publishes resource 15
+      message:
+        $ref: '#/components/messages/Resource'
+  topic/resource16:
+    publish:
+      operationId: pubResource16
+      description: Publishes resource 16
+      message:
+        $ref: '#/components/messages/Resource'
+  topic/resource17:
+    publish:
+      operationId: pubResource17
+      description: Publishes resource 17
+      message:
+        $ref: '#/components/messages/Resource'
+  topic/resource18:
+    publish:
+      operationId: pubResource18
+      description: Publishes resource 18
+      message:
+        $ref: '#/components/messages/Resource'
+  topic/resource19:
+    publish:
+      operationId: pubResource19
+      description: Publishes resource 19
+      message:
+        $ref: '#/components/messages/Resource'
+  topic/resource20:
+    publish:
+      operationId: pubResource20
+      description: Publishes resource 20
+      message:
+        $ref: '#/components/messages/Resource'
+  topic/resource21:
+    publish:
+      operationId: pubResource21
+      description: Publishes resource 21
+      message:
+        $ref: '#/components/messages/Resource'
+  topic/resource22:
+    publish:
+      operationId: pubResource22
+      description: Publishes resource 22
+      message:
+        $ref: '#/components/messages/Resource'
+  topic/resource23:
+    publish:
+      operationId: pubResource23
+      description: Publishes resource 23
+      message:
+        $ref: '#/components/messages/Resource'
+  topic/resource24:
+    publish:
+      operationId: pubResource24
+      description: Publishes resource 24
+      message:
+        $ref: '#/components/messages/Resource'
+  topic/resource25:
+    publish:
+      operationId: pubResource25
+      description: Publishes resource 25
+      message:
+        $ref: '#/components/messages/Resource'
+  topic/resource26:
+    publish:
+      operationId: pubResource26
+      description: Publishes resource 26
+      message:
+        $ref: '#/components/messages/Resource'
+  topic/resource27:
+    publish:
+      operationId: pubResource27
+      description: Publishes resource 27
+      message:
+        $ref: '#/components/messages/Resource'
+  topic/resource28:
+    publish:
+      operationId: pubResource28
+      description: Publishes resource 28
+      message:
+        $ref: '#/components/messages/Resource'
+  topic/resource29:
+    publish:
+      operationId: pubResource29
+      description: Publishes resource 29
+      message:
+        $ref: '#/components/messages/Resource'
+  topic/resource30:
+    publish:
+      operationId: pubResource30
+      description: Publishes resource 30
+      message:
+        $ref: '#/components/messages/Resource'
+  topic/resource31:
+    publish:
+      operationId: pubResource31
+      description: Publishes resource 31
+      message:
+        $ref: '#/components/messages/Resource'
+  topic/resource32:
+    publish:
+      operationId: pubResource32
+      description: Publishes resource 32
+      message:
+        $ref: '#/components/messages/Resource'
+  topic/resource33:
+    publish:
+      operationId: pubResource33
+      description: Publishes resource 33
+      message:
+        $ref: '#/components/messages/Resource'
+  topic/resource34:
+    publish:
+      operationId: pubResource34
+      description: Publishes resource 34
+      message:
+        $ref: '#/components/messages/Resource'
+  topic/resource35:
+    publish:
+      operationId: pubResource35
+      description: Publishes resource 35
+      message:
+        $ref: '#/components/messages/Resource'
+  topic/resource36:
+    publish:
+      operationId: pubResource36
+      description: Publishes resource 36
+      message:
+        $ref: '#/components/messages/Resource'
+  topic/resource37:
+    publish:
+      operationId: pubResource37
+      description: Publishes resource 37
+      message:
+        $ref: '#/components/messages/Resource'
+  topic/resource38:
+    publish:
+      operationId: pubResource38
+      description: Publishes resource 38
+      message:
+        $ref: '#/components/messages/Resource'
+  topic/resource39:
+    publish:
+      operationId: pubResource39
+      description: Publishes resource 39
+      message:
+        $ref: '#/components/messages/Resource'
+  topic/resource40:
+    publish:
+      operationId: pubResource40
+      description: Publishes resource 40
+      message:
+        $ref: '#/components/messages/Resource'
+  topic/resource41:
+    publish:
+      operationId: pubResource41
+      description: Publishes resource 41
+      message:
+        $ref: '#/components/messages/Resource'
+  topic/resource42:
+    publish:
+      operationId: pubResource42
+      description: Publishes resource 42
+      message:
+        $ref: '#/components/messages/Resource'
+  topic/resource43:
+    publish:
+      operationId: pubResource43
+      description: Publishes resource 43
+      message:
+        $ref: '#/components/messages/Resource'
+  topic/resource44:
+    publish:
+      operationId: pubResource44
+      description: Publishes resource 44
+      message:
+        $ref: '#/components/messages/Resource'
+  topic/resource45:
+    publish:
+      operationId: pubResource45
+      description: Publishes resource 45
+      message:
+        $ref: '#/components/messages/Resource'
+  topic/resource46:
+    publish:
+      operationId: pubResource46
+      description: Publishes resource 46
+      message:
+        $ref: '#/components/messages/Resource'
+  topic/resource47:
+    publish:
+      operationId: pubResource47
+      description: Publishes resource 47
+      message:
+        $ref: '#/components/messages/Resource'
+  topic/resource48:
+    publish:
+      operationId: pubResource48
+      description: Publishes resource 48
+      message:
+        $ref: '#/components/messages/Resource'
+  topic/resource49:
+    publish:
+      operationId: pubResource49
+      description: Publishes resource 49
+      message:
+        $ref: '#/components/messages/Resource'
+  topic/resource50:
+    publish:
+      operationId: pubResource50
+      description: Publishes resource 50
+      message:
+        $ref: '#/components/messages/Resource'
+components:
+  messages:
+    Resource:
+      title: ResourceMessage
+      description: A resource message
+      payload:
+        type: object
+        properties:
+          id:
+            type: string

@@ -5,8 +5,8 @@ import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 
 describe("OpenAPI Module Diagnostics", () => {
-  const cleanPath = resolve(import.meta.dirname, "../../smile/fixtures/sample-openapi-clean.yaml");
-  const brokenPath = resolve(import.meta.dirname, "../../smile/fixtures/sample-openapi.yaml");
+  const cleanPath = resolve(import.meta.dirname, "fixtures/sample-openapi-clean.yaml");
+  const brokenPath = resolve(import.meta.dirname, "fixtures/sample-openapi.yaml");
 
   it("identifies clean OpenAPI specification without diagnostics", async () => {
     const result = await lintSpec(cleanPath);

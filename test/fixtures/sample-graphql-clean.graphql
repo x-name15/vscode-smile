@@ -1,0 +1,21 @@
+"""
+Represents a registered user in the system.
+"""
+type User {
+  "Unique identifier for the user."
+  id: ID!
+  "Full display name."
+  name: String!
+  "The user's assigned role. Deprecated — use the permissions field instead."
+  role: String @deprecated(reason: "Use the permissions field instead.")
+}
+
+"""
+Root query type — all read operations start here.
+"""
+type Query {
+  "Fetch a single user by their unique ID."
+  user(id: ID!): User
+  "List all users in the system."
+  users: [User!]!
+}

@@ -1,0 +1,234 @@
+syntax = "proto3";
+
+package commerce.v1;
+
+import "google/protobuf/timestamp.proto";
+
+// ─── User Service ──────────────────────────────────────────────────────────
+
+/* Manages user accounts: registration, authentication, and profile operations. */
+service UserService {
+  /* Creates a new user account and returns the created user. */
+  rpc CreateUser (CreateUserRequest) returns (User) {}
+
+  /* Retrieves a user by their unique identifier. */
+  rpc GetUser (GetUserRequest) returns (User) {}
+
+  /* Updates mutable fields of an existing user account. */
+  rpc UpdateUser (UpdateUserRequest) returns (User) {}
+
+  /* Permanently deletes a user and all associated data. */
+  rpc DeleteUser (DeleteUserRequest) returns (DeleteUserResponse) {}
+
+  /* Lists all users with optional pagination and filters. */
+  rpc ListUsers (ListUsersRequest) returns (ListUsersResponse) {}
+
+  rpc UndocumentedMethod (GetUserRequest) returns (User) {}
+}
+
+// ─── Product Service ───────────────────────────────────────────────────────
+
+/* Manages the product catalog: creation, retrieval, pricing, and inventory. */
+service ProductService {
+  /* Creates a new product in the catalog. */
+  rpc CreateProduct (CreateProductRequest) returns (Product) {}
+
+  /* Retrieves a single product by ID. */
+  rpc GetProduct (GetProductRequest) returns (Product) {}
+
+  /* Lists products with optional category filter and pagination. */
+  rpc ListProducts (ListProductsRequest) returns (ListProductsResponse) {}
+}
+
+// ─── Order Service ─────────────────────────────────────────────────────────
+
+/* Handles order lifecycle: placement, tracking, and cancellation. */
+service OrderService {
+  /* Places a new order for the given user. */
+  rpc PlaceOrder (PlaceOrderRequest) returns (Order) {}
+
+  /* Streams order status updates in real time. */
+  rpc TrackOrder (TrackOrderRequest) returns (stream OrderStatusUpdate) {}
+
+  /* Cancels an existing order if it has not yet shipped. */
+  rpc CancelOrder (CancelOrderRequest) returns (CancelOrderResponse) {}
+
+  rpc anotherUndocumented (CancelOrderRequest) returns (CancelOrderResponse) {}
+}
+
+// ─── Messages ──────────────────────────────────────────────────────────────
+
+/* Represents a registered user in the system. */
+message User {
+  string id = 1;
+  string email = 2;
+  string displayName = 3;
+  UserStatus status = 4;
+  Address billingAddress = 5;
+}
+
+/* Bad message casing — should trigger pascal-case-messages */
+message badAddress {
+  string street_name = 1;
+  string Bad_Field = 2;
+  string postalCode = 3;
+}
+
+/* Correctly named address message. */
+message Address {
+  string street = 1;
+  string city = 2;
+  string countryCode = 3;
+  string postalCode = 4;
+}
+
+/* Represents a product in the catalog. */
+message Product {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+  int64 priceInCents = 4;
+  string currencyCode = 5;
+  ProductCategory category = 6;
+  bool inStock = 7;
+}
+
+/* Represents a placed order. */
+message Order {
+  string id = 1;
+  string userId = 2;
+  repeated OrderLine items = 3;
+  OrderStatus status = 4;
+  int64 totalInCents = 5;
+}
+
+/* A single line item within an order. */
+message OrderLine {
+  string productId = 1;
+  int32 quantity = 2;
+  int64 unitPriceInCents = 3;
+}
+
+/* A real-time update for an order's tracking status. */
+message OrderStatusUpdate {
+  string orderId = 1;
+  OrderStatus newStatus = 2;
+}
+
+/* Request message for creating a user. */
+message CreateUserRequest {
+  string email = 1;
+  string password = 2;
+  string displayName = 3;
+}
+
+/* Request message for fetching a user. */
+message GetUserRequest {
+  string userId = 1;
+}
+
+/* Request for updating a user's mutable fields. */
+message UpdateUserRequest {
+  string userId = 1;
+  string displayName = 2;
+  Address billingAddress = 3;
+}
+
+/* Request to delete a user. */
+message DeleteUserRequest {
+  string userId = 1;
+}
+
+/* Response returned when a user is deleted. */
+message DeleteUserResponse {
+  bool success = 1;
+}
+
+/* Request for listing users with optional filters. */
+message ListUsersRequest {
+  int32 pageSize = 1;
+  string pageToken = 2;
+  UserStatus filterByStatus = 3;
+}
+
+/* Paginated list of users. */
+message ListUsersResponse {
+  repeated User users = 1;
+  string nextPageToken = 2;
+}
+
+/* Request for creating a product. */
+message CreateProductRequest {
+  string name = 1;
+  string description = 2;
+  int64 priceInCents = 3;
+  string currencyCode = 4;
+  ProductCategory category = 5;
+}
+
+/* Request for retrieving a product. */
+message GetProductRequest {
+  string productId = 1;
+}
+
+/* Request for listing products. */
+message ListProductsRequest {
+  ProductCategory filterByCategory = 1;
+  int32 pageSize = 2;
+  string pageToken = 3;
+}
+
+/* Paginated list of products. */
+message ListProductsResponse {
+  repeated Product products = 1;
+  string nextPageToken = 2;
+}
+
+/* Request to place an order. */
+message PlaceOrderRequest {
+  string userId = 1;
+  repeated OrderLine items = 2;
+}
+
+/* Request to track a specific order. */
+message TrackOrderRequest {
+  string orderId = 1;
+}
+
+/* Request to cancel an order. */
+message CancelOrderRequest {
+  string orderId = 1;
+  string reason = 2;
+}
+
+/* Response when an order is cancelled. */
+message CancelOrderResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+// ─── Enums ─────────────────────────────────────────────────────────────────
+
+enum UserStatus {
+  USER_STATUS_UNSPECIFIED = 0;
+  USER_STATUS_ACTIVE = 1;
+  USER_STATUS_SUSPENDED = 2;
+  USER_STATUS_DELETED = 3;
+}
+
+enum OrderStatus {
+  ORDER_STATUS_UNSPECIFIED = 0;
+  ORDER_STATUS_PLACED = 1;
+  ORDER_STATUS_CONFIRMED = 2;
+  ORDER_STATUS_SHIPPED = 3;
+  ORDER_STATUS_DELIVERED = 4;
+  ORDER_STATUS_CANCELLED = 5;
+}
+
+enum ProductCategory {
+  PRODUCT_CATEGORY_UNSPECIFIED = 0;
+  PRODUCT_CATEGORY_ELECTRONICS = 1;
+  PRODUCT_CATEGORY_CLOTHING = 2;
+  PRODUCT_CATEGORY_FOOD = 3;
+  PRODUCT_CATEGORY_BOOKS = 4;
+}

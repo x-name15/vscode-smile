@@ -5,8 +5,8 @@ import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 
 describe("Postman Module Diagnostics", () => {
-  const cleanPath = resolve(import.meta.dirname, "../../smile/fixtures/sample-postman-clean.json");
-  const brokenPath = resolve(import.meta.dirname, "../../smile/fixtures/sample-postman.json");
+  const cleanPath = resolve(import.meta.dirname, "fixtures/sample-postman-clean.json");
+  const brokenPath = resolve(import.meta.dirname, "fixtures/sample-postman.json");
 
   it("identifies clean Postman collection", async () => {
     const res = await lintSpec(cleanPath);

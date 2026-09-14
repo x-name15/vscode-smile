@@ -1,0 +1,555 @@
+"""
+Type for Resource 1
+"""
+type Resource1 {
+  "ID field"
+  id: ID!
+  "Name field"
+  name: String
+}
+"""
+Type for Resource 2
+"""
+type Resource2 {
+  "ID field"
+  id: ID!
+  "Name field"
+  name: String
+}
+"""
+Type for Resource 3
+"""
+type Resource3 {
+  "ID field"
+  id: ID!
+  "Name field"
+  name: String
+}
+"""
+Type for Resource 4
+"""
+type Resource4 {
+  "ID field"
+  id: ID!
+  "Name field"
+  name: String
+}
+"""
+Type for Resource 5
+"""
+type Resource5 {
+  "ID field"
+  id: ID!
+  "Name field"
+  name: String
+}
+"""
+Type for Resource 6
+"""
+type Resource6 {
+  "ID field"
+  id: ID!
+  "Name field"
+  name: String
+}
+"""
+Type for Resource 7
+"""
+type Resource7 {
+  "ID field"
+  id: ID!
+  "Name field"
+  name: String
+}
+"""
+Type for Resource 8
+"""
+type Resource8 {
+  "ID field"
+  id: ID!
+  "Name field"
+  name: String
+}
+"""
+Type for Resource 9
+"""
+type Resource9 {
+  "ID field"
+  id: ID!
+  "Name field"
+  name: String
+}
+"""
+Type for Resource 10
+"""
+type Resource10 {
+  "ID field"
+  id: ID!
+  "Name field"
+  name: String
+}
+"""
+Type for Resource 11
+"""
+type Resource11 {
+  "ID field"
+  id: ID!
+  "Name field"
+  name: String
+}
+"""
+Type for Resource 12
+"""
+type Resource12 {
+  "ID field"
+  id: ID!
+  "Name field"
+  name: String
+}
+"""
+Type for Resource 13
+"""
+type Resource13 {
+  "ID field"
+  id: ID!
+  "Name field"
+  name: String
+}
+"""
+Type for Resource 14
+"""
+type Resource14 {
+  "ID field"
+  id: ID!
+  "Name field"
+  name: String
+}
+"""
+Type for Resource 15
+"""
+type Resource15 {
+  "ID field"
+  id: ID!
+  "Name field"
+  name: String
+}
+"""
+Type for Resource 16
+"""
+type Resource16 {
+  "ID field"
+  id: ID!
+  "Name field"
+  name: String
+}
+"""
+Type for Resource 17
+"""
+type Resource17 {
+  "ID field"
+  id: ID!
+  "Name field"
+  name: String
+}
+"""
+Type for Resource 18
+"""
+type Resource18 {
+  "ID field"
+  id: ID!
+  "Name field"
+  name: String
+}
+"""
+Type for Resource 19
+"""
+type Resource19 {
+  "ID field"
+  id: ID!
+  "Name field"
+  name: String
+}
+"""
+Type for Resource 20
+"""
+type Resource20 {
+  "ID field"
+  id: ID!
+  "Name field"
+  name: String
+}
+"""
+Type for Resource 21
+"""
+type Resource21 {
+  "ID field"
+  id: ID!
+  "Name field"
+  name: String
+}
+"""
+Type for Resource 22
+"""
+type Resource22 {
+  "ID field"
+  id: ID!
+  "Name field"
+  name: String
+}
+"""
+Type for Resource 23
+"""
+type Resource23 {
+  "ID field"
+  id: ID!
+  "Name field"
+  name: String
+}
+"""
+Type for Resource 24
+"""
+type Resource24 {
+  "ID field"
+  id: ID!
+  "Name field"
+  name: String
+}
+"""
+Type for Resource 25
+"""
+type Resource25 {
+  "ID field"
+  id: ID!
+  "Name field"
+  name: String
+}
+"""
+Type for Resource 26
+"""
+type Resource26 {
+  "ID field"
+  id: ID!
+  "Name field"
+  name: String
+}
+"""
+Type for Resource 27
+"""
+type Resource27 {
+  "ID field"
+  id: ID!
+  "Name field"
+  name: String
+}
+"""
+Type for Resource 28
+"""
+type Resource28 {
+  "ID field"
+  id: ID!
+  "Name field"
+  name: String
+}
+"""
+Type for Resource 29
+"""
+type Resource29 {
+  "ID field"
+  id: ID!
+  "Name field"
+  name: String
+}
+"""
+Type for Resource 30
+"""
+type Resource30 {
+  "ID field"
+  id: ID!
+  "Name field"
+  name: String
+}
+"""
+Type for Resource 31
+"""
+type Resource31 {
+  "ID field"
+  id: ID!
+  "Name field"
+  name: String
+}
+"""
+Type for Resource 32
+"""
+type Resource32 {
+  "ID field"
+  id: ID!
+  "Name field"
+  name: String
+}
+"""
+Type for Resource 33
+"""
+type Resource33 {
+  "ID field"
+  id: ID!
+  "Name field"
+  name: String
+}
+"""
+Type for Resource 34
+"""
+type Resource34 {
+  "ID field"
+  id: ID!
+  "Name field"
+  name: String
+}
+"""
+Type for Resource 35
+"""
+type Resource35 {
+  "ID field"
+  id: ID!
+  "Name field"
+  name: String
+}
+"""
+Type for Resource 36
+"""
+type Resource36 {
+  "ID field"
+  id: ID!
+  "Name field"
+  name: String
+}
+"""
+Type for Resource 37
+"""
+type Resource37 {
+  "ID field"
+  id: ID!
+  "Name field"
+  name: String
+}
+"""
+Type for Resource 38
+"""
+type Resource38 {
+  "ID field"
+  id: ID!
+  "Name field"
+  name: String
+}
+"""
+Type for Resource 39
+"""
+type Resource39 {
+  "ID field"
+  id: ID!
+  "Name field"
+  name: String
+}
+"""
+Type for Resource 40
+"""
+type Resource40 {
+  "ID field"
+  id: ID!
+  "Name field"
+  name: String
+}
+"""
+Type for Resource 41
+"""
+type Resource41 {
+  "ID field"
+  id: ID!
+  "Name field"
+  name: String
+}
+"""
+Type for Resource 42
+"""
+type Resource42 {
+  "ID field"
+  id: ID!
+  "Name field"
+  name: String
+}
+"""
+Type for Resource 43
+"""
+type Resource43 {
+  "ID field"
+  id: ID!
+  "Name field"
+  name: String
+}
+"""
+Type for Resource 44
+"""
+type Resource44 {
+  "ID field"
+  id: ID!
+  "Name field"
+  name: String
+}
+"""
+Type for Resource 45
+"""
+type Resource45 {
+  "ID field"
+  id: ID!
+  "Name field"
+  name: String
+}
+"""
+Type for Resource 46
+"""
+type Resource46 {
+  "ID field"
+  id: ID!
+  "Name field"
+  name: String
+}
+"""
+Type for Resource 47
+"""
+type Resource47 {
+  "ID field"
+  id: ID!
+  "Name field"
+  name: String
+}
+"""
+Type for Resource 48
+"""
+type Resource48 {
+  "ID field"
+  id: ID!
+  "Name field"
+  name: String
+}
+"""
+Type for Resource 49
+"""
+type Resource49 {
+  "ID field"
+  id: ID!
+  "Name field"
+  name: String
+}
+"""
+Type for Resource 50
+"""
+type Resource50 {
+  "ID field"
+  id: ID!
+  "Name field"
+  name: String
+}
+"""
+Query root
+"""
+type Query {
+  "Get resource 1"
+  getResource1: Resource1
+  "Get resource 2"
+  getResource2: Resource2
+  "Get resource 3"
+  getResource3: Resource3
+  "Get resource 4"
+  getResource4: Resource4
+  "Get resource 5"
+  getResource5: Resource5
+  "Get resource 6"
+  getResource6: Resource6
+  "Get resource 7"
+  getResource7: Resource7
+  "Get resource 8"
+  getResource8: Resource8
+  "Get resource 9"
+  getResource9: Resource9
+  "Get resource 10"
+  getResource10: Resource10
+  "Get resource 11"
+  getResource11: Resource11
+  "Get resource 12"
+  getResource12: Resource12
+  "Get resource 13"
+  getResource13: Resource13
+  "Get resource 14"
+  getResource14: Resource14
+  "Get resource 15"
+  getResource15: Resource15
+  "Get resource 16"
+  getResource16: Resource16
+  "Get resource 17"
+  getResource17: Resource17
+  "Get resource 18"
+  getResource18: Resource18
+  "Get resource 19"
+  getResource19: Resource19
+  "Get resource 20"
+  getResource20: Resource20
+  "Get resource 21"
+  getResource21: Resource21
+  "Get resource 22"
+  getResource22: Resource22
+  "Get resource 23"
+  getResource23: Resource23
+  "Get resource 24"
+  getResource24: Resource24
+  "Get resource 25"
+  getResource25: Resource25
+  "Get resource 26"
+  getResource26: Resource26
+  "Get resource 27"
+  getResource27: Resource27
+  "Get resource 28"
+  getResource28: Resource28
+  "Get resource 29"
+  getResource29: Resource29
+  "Get resource 30"
+  getResource30: Resource30
+  "Get resource 31"
+  getResource31: Resource31
+  "Get resource 32"
+  getResource32: Resource32
+  "Get resource 33"
+  getResource33: Resource33
+  "Get resource 34"
+  getResource34: Resource34
+  "Get resource 35"
+  getResource35: Resource35
+  "Get resource 36"
+  getResource36: Resource36
+  "Get resource 37"
+  getResource37: Resource37
+  "Get resource 38"
+  getResource38: Resource38
+  "Get resource 39"
+  getResource39: Resource39
+  "Get resource 40"
+  getResource40: Resource40
+  "Get resource 41"
+  getResource41: Resource41
+  "Get resource 42"
+  getResource42: Resource42
+  "Get resource 43"
+  getResource43: Resource43
+  "Get resource 44"
+  getResource44: Resource44
+  "Get resource 45"
+  getResource45: Resource45
+  "Get resource 46"
+  getResource46: Resource46
+  "Get resource 47"
+  getResource47: Resource47
+  "Get resource 48"
+  getResource48: Resource48
+  "Get resource 49"
+  getResource49: Resource49
+  "Get resource 50"
+  getResource50: Resource50
+}

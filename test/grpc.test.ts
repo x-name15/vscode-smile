@@ -5,8 +5,8 @@ import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 
 describe("gRPC / Protobuf Module Diagnostics", () => {
-  const cleanPath = resolve(import.meta.dirname, "../../smile/fixtures/sample-grpc-clean.proto");
-  const brokenPath = resolve(import.meta.dirname, "../../smile/fixtures/sample-grpc.proto");
+  const cleanPath = resolve(import.meta.dirname, "fixtures/sample-grpc-clean.proto");
+  const brokenPath = resolve(import.meta.dirname, "fixtures/sample-grpc.proto");
 
   it("identifies clean gRPC proto specification", async () => {
     const res = await lintSpec(cleanPath);

@@ -5,8 +5,8 @@ import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 
 describe("JSON Schema Module Diagnostics", () => {
-  const cleanPath = resolve(import.meta.dirname, "../../smile/fixtures/sample-jsonschema-clean.json");
-  const brokenPath = resolve(import.meta.dirname, "../../smile/fixtures/sample-jsonschema.json");
+  const cleanPath = resolve(import.meta.dirname, "fixtures/sample-jsonschema-clean.json");
+  const brokenPath = resolve(import.meta.dirname, "fixtures/sample-jsonschema.json");
 
   it("identifies clean JSON Schema document", async () => {
     const res = await lintSpec(cleanPath);

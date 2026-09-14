@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package test;
+
+service Greeter {
+  /* Says hello to a user by name. */
+  rpc SayHello (HelloRequest) returns (HelloReply) {}
+
+  rpc SayGoodbye (goodbyeRequest) returns (GoodbyeReply) {}
+}
+
+/* Good pascal case */
+message HelloRequest {
+  string name = 1;
+  /* Bad field name below — should trigger camel-case-fields */
+  string Name_bad = 2;
+}
+
+message HelloReply {
+  string message = 1;
+}
+
+// bad pascal case
+message goodbyeRequest {
+  string id = 1;
+}
+
+message GoodbyeReply {}

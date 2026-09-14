@@ -5,8 +5,8 @@ import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 
 describe("GraphQL Module Diagnostics", () => {
-  const cleanPath = resolve(import.meta.dirname, "../../smile/fixtures/sample-graphql-clean.graphql");
-  const brokenPath = resolve(import.meta.dirname, "../../smile/fixtures/sample-graphql.graphql");
+  const cleanPath = resolve(import.meta.dirname, "fixtures/sample-graphql-clean.graphql");
+  const brokenPath = resolve(import.meta.dirname, "fixtures/sample-graphql.graphql");
 
   it("identifies clean GraphQL schema", async () => {
     const res = await lintSpec(cleanPath);

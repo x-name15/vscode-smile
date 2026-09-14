@@ -1,0 +1,23 @@
+asyncapi: "2.6.0"
+info:
+  title: Broken Notification Service
+  version: "1.0.0"
+
+channels:
+  user/signedup:
+    subscribe:
+      # Missing operationId
+      message:
+        # Missing payload schema types
+        payload:
+          type: object
+          properties:
+            userId:
+              description: The user identifier
+              # Missing type — should flag untyped-schema-property
+            email:
+              type: string
+  order/created:
+    publish:
+      operationId: onOrderCreated
+      # Missing message definition entirely
