@@ -1,0 +1,180 @@
+{
+  "name": "vscode-smile",
+  "displayName": "Smile — Strict API Contract Linter",
+  "description": "Relentless real-time API contract linter and autofixer for OpenAPI, AsyncAPI, GraphQL, gRPC, JSON Schema, and Postman.",
+  "version": "1.0.0",
+  "publisher": "mrjacket",
+  "author": "Mr Jacket / Felix Manrique / x-name15",
+  "icon": "media/icon.png",
+  "license": "GPL-3.0-only",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/x-name15/vscode-smile.git"
+  },
+  "homepage": "https://github.com/x-name15/vscode-smile#readme",
+  "bugs": {
+    "url": "https://github.com/x-name15/vscode-smile/issues"
+  },
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Linters",
+    "Programming Languages",
+    "Testing"
+  ],
+  "keywords": [
+    "openapi",
+    "asyncapi",
+    "swagger",
+    "graphql",
+    "grpc",
+    "protobuf",
+    "postman",
+    "json-schema",
+    "linter",
+    "contract-testing"
+  ],
+  "main": "./dist/extension.js",
+  "activationEvents": [
+    "onLanguage:yaml",
+    "onLanguage:json",
+    "onLanguage:graphql",
+    "onLanguage:proto3"
+  ],
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "smile-sidebar",
+          "title": "Smile: The Extension for API Contract Linting",
+          "icon": "icon.png"
+        }
+      ]
+    },
+    "views": {
+      "smile-sidebar": [
+        {
+          "id": "smile-overview",
+          "name": "Active Specification"
+        },
+        {
+          "id": "smile-commands",
+          "name": "Visual Tools & Workflows"
+        }
+      ]
+    },
+    "menus": {
+      "view/title": [
+        {
+          "command": "smile.lintCurrentFile",
+          "when": "view == smile-overview",
+          "group": "navigation@1"
+        },
+        {
+          "command": "smile.fixCurrentFile",
+          "when": "view == smile-overview",
+          "group": "navigation@2"
+        },
+        {
+          "command": "smile.openRulesManager",
+          "when": "view == smile-overview",
+          "group": "navigation@3"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "smile.lintCurrentFile",
+        "title": "Lint Current Specification",
+        "category": "Smile",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "smile.fixCurrentFile",
+        "title": "Autofix Safe Issues on Current File",
+        "category": "Smile",
+        "icon": "$(wand)"
+      },
+      {
+        "command": "smile.openRulesManager",
+        "title": "Open Visual Rules Manager",
+        "category": "Smile",
+        "icon": "$(gear)"
+      },
+      {
+        "command": "smile.openSmokeTester",
+        "title": "Run Live API Contract Test (Smoke Tester)",
+        "category": "Smile"
+      },
+      {
+        "command": "smile.bundleSpec",
+        "title": "Bundle Multi-File Specification ($ref)",
+        "category": "Smile"
+      },
+      {
+        "command": "smile.exportReport",
+        "title": "Export Contract Audit Report (SARIF / Markdown / HTML)",
+        "category": "Smile"
+      },
+      {
+        "command": "smile.openInitWizard",
+        "title": "Project Setup Wizard (Visual Init)",
+        "category": "Smile"
+      },
+      {
+        "command": "smile.installHook",
+        "title": "Install Native Git Pre-Commit Hook",
+        "category": "Smile"
+      }
+    ],
+    "configuration": {
+      "title": "Smile",
+      "properties": {
+        "smile.enable": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable or disable Smile real-time contract diagnostics."
+        },
+        "smile.runOn": {
+          "type": "string",
+          "enum": [
+            "onSave",
+            "onType"
+          ],
+          "default": "onSave",
+          "description": "When to run Smile contract validation (onSave or debounced onType)."
+        },
+        "smile.maxWarnings": {
+          "type": "number",
+          "default": -1,
+          "description": "Maximum allowed warnings before marking as contract failure (-1 for unlimited)."
+        },
+        "smile.configFile": {
+          "type": "string",
+          "default": "",
+          "description": "Optional path to a custom Smile configuration file (e.g. config.smile.json). If omitted, automatically discovers config files in the workspace."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run build",
+    "build": "tsup",
+    "compile": "tsc -p ./",
+    "watch": "tsup src/extension.ts --format cjs --watch --external vscode",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "@mrjacket/smile": "^1.7.0"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.1",
+    "@types/vscode": "^1.90.0",
+    "tsup": "^8.5.1",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.0"
+  }
+}

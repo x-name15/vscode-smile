@@ -1,0 +1,75 @@
+name: Release VS Code Extension
+
+on:
+  workflow_run:
+    workflows: ["VS Code Extension CI Gate"]
+    types:
+      - completed
+    branches:
+      - main
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Get version from package.json
+        id: version
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Extract notes from CHANGELOG
+        id: notes
+        run: |
+          VERSION="${{ steps.version.outputs.version }}"
+          NOTES=$(awk "/## \[${VERSION}\]/{found=1; next} found && /^## \[/{exit} found{print}" CHANGELOG.md)
+          echo "notes<<EOF" >> $GITHUB_OUTPUT
+          echo "$NOTES" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Build and Package Extension VSIX
+        run: |
+          npm run build
+          npx @vscode/vsce package --no-git-tag-version
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ steps.version.outputs.version }}
+          name: "v${{ steps.version.outputs.version }} — Smile for VS Code"
+          body: |
+            ## ☺ Smile for Visual Studio Code
+
+            ${{ steps.notes.outputs.notes }}
+
+            ### 📦 Manual Installation
+
+            Download the attached `.vsix` file and install it in VS Code via:
+            `Extensions` -> `...` (Views and More Actions) -> `Install from VSIX...`
+          files: "*.vsix"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish to VS Code Marketplace
+        if: env.VSCE_PAT != ''
+        run: npx @vscode/vsce publish --packagePath *.vsix -p ${{ secrets.VSCE_PAT }}
+        env:
+          VSCE_PAT: ${{ secrets.VSCE_PAT }}

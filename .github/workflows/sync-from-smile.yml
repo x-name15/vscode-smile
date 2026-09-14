@@ -1,0 +1,52 @@
+name: Sync with Smile Core Releases
+
+on:
+  repository_dispatch:
+    types: [smile-released]
+  workflow_dispatch:
+
+jobs:
+  sync-core:
+    name: Sync @mrjacket/smile & Verify
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+
+      - name: Install Current Dependencies
+        run: npm ci
+
+      - name: Update @mrjacket/smile to Latest
+        run: |
+          npm install @mrjacket/smile@latest
+
+      - name: Run Typecheck
+        run: npm run typecheck
+
+      - name: Run Vitest Suite
+        run: npm test
+
+      - name: Commit and Push if updated
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          if git diff --quiet package.json package-lock.json; then
+            echo "No changes to @mrjacket/smile version."
+          else
+            LATEST_VERSION=$(node -p "require('./node_modules/@mrjacket/smile/package.json').version")
+            git add package.json package-lock.json
+            git commit -m "chore(deps): sync @mrjacket/smile to v${LATEST_VERSION} [skip ci]"
+            git push
+          fi
