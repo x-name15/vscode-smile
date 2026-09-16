@@ -10,6 +10,13 @@ channels:
     messages:
       userSignedUpMessage:
         description: Payload when a user signs up
+        correlationId:
+          location: "$message.header#/correlationId"
+        headers:
+          type: object
+          properties:
+            correlationId:
+              type: string
         payload:
           type: object
           properties:
@@ -25,6 +32,13 @@ channels:
     messages:
       orderCreatedMessage:
         description: Payload when an order is created
+        correlationId:
+          location: "$message.header#/correlationId"
+        headers:
+          type: object
+          properties:
+            correlationId:
+              type: string
         payload:
           type: object
           properties:

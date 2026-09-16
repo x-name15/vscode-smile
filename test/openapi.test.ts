@@ -29,4 +29,16 @@ describe("OpenAPI Module Diagnostics", () => {
       expect(loc.endLine).toBeGreaterThanOrEqual(loc.startLine);
     }
   });
+
+  it("treats non-spec files (e.g. CHANGELOG.md) as Unknown without false positive diagnostics", async () => {
+    const changelogPath = resolve(import.meta.dirname, "../CHANGELOG.md");
+    const result = await lintSpec(changelogPath);
+    expect(result.format).toBe(ESpecFormat.Unknown);
+  });
+
+  it("treats package.json manifests as Unknown", async () => {
+    const pkgPath = resolve(import.meta.dirname, "../package.json");
+    const result = await lintSpec(pkgPath);
+    expect(result.format).toBe(ESpecFormat.Unknown);
+  });
 });

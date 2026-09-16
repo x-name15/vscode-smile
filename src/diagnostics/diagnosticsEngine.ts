@@ -89,6 +89,25 @@ export class DiagnosticsEngine {
       return { isSpec: false, errorCount: 0, warningCount: 0, passed: true };
     }
 
+    // Ignore unsupported file extensions (.md, .ts, .js, .txt, .json non-specs, etc.)
+    const VALID_SPEC_EXTENSIONS = /\.(ya?ml|json|graphql|gql|proto)$/i;
+    const filename = filePath ? filePath.split(/[/\\]/).pop() || "" : "";
+    const isExcludedConfig =
+      /^(package(-lock)?|tsconfig(\..+)?|jsconfig(\..+)?)\.json$/i.test(filename) ||
+      /^(config\.smile|smile\.config|\.smilerc|smile)\.json$/i.test(filename);
+
+    if ((filePath && !VALID_SPEC_EXTENSIONS.test(filePath)) || isExcludedConfig) {
+      this.clearDocument(document.uri);
+      const status: IDocumentContractStatus = {
+        isSpec: false,
+        errorCount: 0,
+        warningCount: 0,
+        passed: true,
+      };
+      this.lastStatuses.set(document.uri.toString(), status);
+      return status;
+    }
+
     try {
       // 1. Resolve project configuration (e.g. config.smile.json)
       const resolvedConfig = await resolveSmileConfig(document.uri);

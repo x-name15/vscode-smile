@@ -4,6 +4,16 @@ All notable changes to the "vscode-smile" extension will be documented in this f
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2026-09-14 — Non-Spec Filtering & Dynamic Rules Metadata SSOT
+
+### Fixed
+- **False Positive Elimination on Non-Spec Documents:** Added early document guards in `DiagnosticsEngine` to ignore non-spec files (`.md`, `.ts`, `.js`, `.py`, etc.) and configuration files (`package.json`, `tsconfig.json`, `config.smile.json`). Prevents non-API documents from being evaluated by linters or generating `malformed-spec` diagnostics.
+
+### Added
+- **Single Source of Truth (SSOT) for Rules Metadata:** Refactored `rulesMetadata.ts` to directly re-export `SMILE_RULES_METADATA` and `IRuleMetadata` from `@mrjacket/smile`. Visual Rules Manager and Project Setup Wizard now automatically inherit newly introduced contract rules (such as `pascal-case-services`, `require-service-comments`, `require-package-name`, `require-collection-description`, and `valid-request-urls`) seamlessly whenever `@mrjacket/smile` is updated.
+
+---
+
 ## [1.0.0] - 2026-09-14 — Initial Release of the Extension
 
 ### Added

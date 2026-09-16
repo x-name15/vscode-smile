@@ -9,7 +9,15 @@ channels:
     subscribe:
       operationId: onUserSignedUp
       message:
+        name: UserSignedUpMessage
         description: Contains the user details
+        correlationId:
+          location: "$message.header#/correlationId"
+        headers:
+          type: object
+          properties:
+            correlationId:
+              type: string
         payload:
           type: object
           properties:
@@ -24,7 +32,15 @@ channels:
     publish:
       operationId: onOrderCreated
       message:
+        name: OrderCreatedMessage
         description: Contains the order details
+        correlationId:
+          location: "$message.header#/correlationId"
+        headers:
+          type: object
+          properties:
+            correlationId:
+              type: string
         payload:
           type: object
           properties:

@@ -1,6 +1,7 @@
 {
   "info": {
     "name": "Clean Postman Collection",
+    "description": "A clean sample Postman collection meeting all quality standards.",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "item": [

@@ -4,7 +4,7 @@ info:
   version: 1.0.0
 security: []
 paths:
-  /users:
+  /v1/users:
     get:
       operationId: listUsers
       summary: List all users
@@ -17,13 +17,32 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/User"
+        default:
+          description: Standard error response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
     post:
       operationId: createUser
       summary: Create a new user
       responses:
         "201":
           description: User created
-  /users/{id}:
+        "429":
+          description: Rate limit exceeded
+          headers:
+            Retry-After:
+              description: Number of seconds before retrying
+              schema:
+                type: integer
+        default:
+          description: Standard error response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /v1/users/{id}:
     get:
       operationId: getUserById
       summary: Get a user by ID
@@ -34,6 +53,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/User"
+        default:
+          description: Standard error response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
       parameters:
         - name: id
           in: path
@@ -56,3 +81,8 @@ components:
             createdBy:
               type: string
               description: who created this user
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
