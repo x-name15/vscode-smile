@@ -168,7 +168,7 @@
     "test:watch": "vitest"
   },
   "dependencies": {
-    "@mrjacket/smile": "^1.7.1"
+    "@mrjacket/smile": "^1.7.5"
   },
   "devDependencies": {
     "@types/node": "^26.1.1",
