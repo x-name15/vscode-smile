@@ -33,7 +33,9 @@ As you save or write your specification files, Smile pinpoints the exact line an
 ### 2. One-Click Quick Fix (Autofix)
 When a missing `operationId` or `summary` is detected:
 1. Click the lightbulb 💡 next to the line or press `Ctrl+.` (`Cmd+.` on macOS).
-2. Select **"☺ Smile: Automatically fix safe contract issues"**.
+2. Choose either:
+   - **`☺ Smile: Autofix 'missing-operation-id'`** (targeted fix for the exact violation under the cursor).
+   - **`☺ Smile: Fix all safe contract issues in this file`** (resolves all safe violations at once).
 3. Smile applies canonical, non-destructive AST changes while preserving all your `# comments`, blank lines, and YAML formatting!
 
 ### 3. Status Bar Indicator
@@ -56,7 +58,7 @@ The dedicated Smile sidebar panel organizes contract evaluation and tools into t
   - 📦 **Spec Bundler (`smile bundle`)**: Resolve external `$ref` pointers.
   - 📊 **Export Audit Report (`smile lint -f`)**: Export reports in SARIF, Markdown, JUnit, and Text.
   - 🚀 **Project Setup Wizard (`smile init`)**: Scaffolding config, CI workflow, and specs.
-  - 🪝 **Install Git Hook (`smile install-hook`)**: Native Git pre-commit contract gate.
+  - 🪝 **Install / Remove Git Hook (`smile install-hook` / `uninstall-hook`)**: Native Git pre-commit contract gate management.
 
 ### 5. 🎨 The Complete Visual Companion Suite
 
@@ -69,7 +71,8 @@ Configure rule severities visually across all 6 formats:
 
 #### ⚡ Live API Smoke Tester (`smile.openSmokeTester`)
 Test running servers against your documented API schemas (Breaching Detector):
-- Enter server Base URL and optional authentication headers.
+- **Recent Runs History:** Automatically saves your last 10 executions with pass/fail badges to reload previous configurations in 1 click.
+- **Quick Header Presets:** Instant insertion of `Bearer Token`, `API Key`, `Basic Auth`, or `JSON Content-Type/Accept` headers.
 - Click **"Run Contract Smoke Test"** to see live response verification tables with latency, HTTP status codes, and schema validation details.
 
 #### 📦 Multi-File Spec Bundler (`smile.bundleSpec`)

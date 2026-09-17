@@ -4,6 +4,18 @@ All notable changes to the "vscode-smile" extension will be documented in this f
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] - 2026-09-17 — QuickFix Lightbulb Actions, Smoke Tester History & Icon Fix
+
+### Added
+- **Context-Aware QuickFixes (`SmileQuickFixProvider`):** Surfaces rule-specific Quick Fix actions in the editor lightbulb menu (`💡 ☺ Smile: Autofix '<rule>'`) directly on lines with fixable violations (`missing-operation-id`, `missing-summary`), alongside a global action to resolve all safe issues in the file at once.
+- **Visual Smoke Tester History & Presets:** Added automatic persistence for recent test executions (up to 10 runs with pass/fail badges and timestamp) to reload previous configurations with 1 click, plus Quick Header Presets for `Bearer Token`, `API Key`, `Basic Auth`, and `JSON Content-Type/Accept`.
+- **Git Hook Management & Safe Uninstaller:** Added `smile.uninstallHook` command and interactive `Remove Git Hook` tool in the sidebar to safely remove `.git/hooks/pre-commit` contract gates with modal confirmation.
+
+### Fixed
+- **Sidebar Activity Bar Icon:** Restored the iconic smiley icon in the VS Code Activity Bar (`media/icon.png`).
+
+---
+
 ## [1.1.0] - 2026-09-14 — Non-Spec Filtering & Dynamic Rules Metadata SSOT
 
 ### Fixed

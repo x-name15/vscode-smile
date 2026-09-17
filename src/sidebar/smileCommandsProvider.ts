@@ -103,7 +103,7 @@ export class SmileCommandsProvider implements vscode.TreeDataProvider<SmileComma
       new SmileCommandItem(
         "Remove Git Hook",
         "Uninstall Pre-Commit Gate",
-        new vscode.ThemeIcon("shield-slash"),
+        new vscode.ThemeIcon("trash"),
         "smile.uninstallHook",
         "Git Hook: remove native pre-commit hook from the repository."
       ),

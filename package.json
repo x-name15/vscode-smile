@@ -2,7 +2,7 @@
   "name": "vscode-smile",
   "displayName": "Smile — Strict API Contract Linter",
   "description": "Relentless real-time API contract linter and autofixer for OpenAPI, AsyncAPI, GraphQL, gRPC, JSON Schema, and Postman.",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "publisher": "mrjacket",
   "author": "Mr Jacket / Felix Manrique / x-name15",
   "icon": "media/icon.png",

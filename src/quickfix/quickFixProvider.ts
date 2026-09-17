@@ -41,19 +41,41 @@ export class SmileQuickFixProvider implements vscode.CodeActionProvider {
     );
 
     if (smileDiagnostics.length > 0) {
-      const fixAction = new vscode.CodeAction(
-        "☺ Smile: Automatically fix safe contract issues",
+      // 1. Specific fix for each diagnostic under cursor
+      for (const diagnostic of smileDiagnostics) {
+        const ruleId = String(diagnostic.code);
+        const label = ruleId === "missing-operation-id"
+          ? "operationId"
+          : ruleId === "missing-summary"
+          ? "summary"
+          : ruleId;
+
+        const specificAction = new vscode.CodeAction(
+          `☺ Smile: Autofix '${ruleId}' (generate canonical ${label})`,
+          vscode.CodeActionKind.QuickFix
+        );
+        specificAction.command = {
+          command: "smile.fixCurrentFile",
+          title: `Smile: Autofix ${ruleId}`,
+          arguments: [document.uri],
+        };
+        specificAction.diagnostics = [diagnostic];
+        specificAction.isPreferred = true;
+        actions.push(specificAction);
+      }
+
+      // 2. Global action to fix all safe issues in file
+      const fixAllAction = new vscode.CodeAction(
+        "☺ Smile: Fix all safe contract issues in this file",
         vscode.CodeActionKind.QuickFix
       );
-      fixAction.command = {
+      fixAllAction.command = {
         command: "smile.fixCurrentFile",
         title: "Smile: Autofix Safe Issues on Current File",
         arguments: [document.uri],
       };
-      fixAction.diagnostics = smileDiagnostics;
-      fixAction.isPreferred = true;
-
-      actions.push(fixAction);
+      fixAllAction.diagnostics = smileDiagnostics;
+      actions.push(fixAllAction);
     }
 
     return actions;

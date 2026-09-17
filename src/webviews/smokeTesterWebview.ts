@@ -251,7 +251,27 @@ export class SmokeTesterWebview {
           </div>
 
           <div class="form-group form-full">
-            <label><strong>Custom Headers (Key: Value per line):</strong></label>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <label><strong>Recent Test Runs / History:</strong></label>
+              <button class="btn btn-secondary" style="font-size: 11px; padding: 2px 8px;" onclick="clearHistory()">Clear History</button>
+            </div>
+            <select id="historySelect" class="input-text" onchange="loadFromHistory(this.value)">
+              <option value="">-- Select a previous test run to restore --</option>
+            </select>
+          </div>
+
+          <div class="form-group form-full">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <label><strong>Custom Headers (Key: Value per line):</strong></label>
+              <select id="presetSelect" class="input-text" style="width: auto; padding: 2px 8px; font-size: 11px;" onchange="applyHeaderPreset(this.value)">
+                <option value="">-- Quick Header Presets --</option>
+                <option value="bearer">Bearer Token (Authorization: Bearer ...)</option>
+                <option value="apikey">API Key (X-API-Key: ...)</option>
+                <option value="basic">Basic Auth (Authorization: Basic ...)</option>
+                <option value="json">Content-Type / Accept (application/json)</option>
+                <option value="clear">Clear Headers</option>
+              </select>
+            </div>
             <textarea id="headers" class="input-text" rows="3" placeholder="Authorization: Bearer my-token&#10;X-API-Key: 12345"></textarea>
           </div>
         </div>
@@ -280,6 +300,67 @@ export class SmokeTesterWebview {
     `;
 
     const scriptContent = `
+      const PRESETS = {
+        bearer: 'Authorization: Bearer YOUR_TOKEN_HERE',
+        apikey: 'X-API-Key: YOUR_API_KEY_HERE',
+        basic: 'Authorization: Basic dXNlcm5hbWU6cGFzc3dvcmQ=',
+        json: 'Content-Type: application/json\\nAccept: application/json',
+      };
+
+      let history = [];
+
+      // Initialize state from vscode.getState()
+      try {
+        const state = vscode.getState();
+        if (state && Array.isArray(state.history)) {
+          history = state.history;
+          renderHistoryDropdown();
+        }
+      } catch (e) {}
+
+      function applyHeaderPreset(presetKey) {
+        if (!presetKey) return;
+        const textarea = document.getElementById('headers');
+        if (presetKey === 'clear') {
+          textarea.value = '';
+        } else if (PRESETS[presetKey]) {
+          const current = textarea.value.trim();
+          textarea.value = current ? current + '\\n' + PRESETS[presetKey] : PRESETS[presetKey];
+        }
+        document.getElementById('presetSelect').value = '';
+      }
+
+      function renderHistoryDropdown() {
+        const select = document.getElementById('historySelect');
+        select.innerHTML = '<option value="">-- Select a previous test run to restore (' + history.length + ' saved) --</option>';
+        history.forEach((item, index) => {
+          const status = item.passed ? '🟢 PASS' : '🔴 FAIL';
+          const opt = document.createElement('option');
+          opt.value = String(index);
+          opt.textContent = status + ' [' + item.timestamp + '] ' + item.baseUrl + ' (' + (item.specName || 'spec') + ')';
+          select.appendChild(opt);
+        });
+      }
+
+      function loadFromHistory(indexStr) {
+        if (indexStr === '') return;
+        const item = history[parseInt(indexStr, 10)];
+        if (!item) return;
+
+        if (item.specPath) document.getElementById('specPath').value = item.specPath;
+        if (item.baseUrl) document.getElementById('baseUrl').value = item.baseUrl;
+        if (item.headers !== undefined) document.getElementById('headers').value = item.headers;
+        if (item.timeoutMs) document.getElementById('timeoutMs').value = item.timeoutMs;
+      }
+
+      function clearHistory() {
+        history = [];
+        try {
+          vscode.setState({ history: [] });
+        } catch (e) {}
+        renderHistoryDropdown();
+      }
+
       function pickFile() {
         vscode.postMessage({ command: 'pickFile' });
       }
@@ -320,6 +401,31 @@ export class SmokeTesterWebview {
           const btn = document.getElementById('runBtn');
           btn.disabled = false;
           document.getElementById('btnText').innerHTML = '▶️ Run Contract Smoke Test';
+
+          const specPath = document.getElementById('specPath').value;
+          const baseUrl = document.getElementById('baseUrl').value;
+          const headers = document.getElementById('headers').value;
+          const timeoutMs = parseInt(document.getElementById('timeoutMs').value, 10) || 5000;
+          const specName = specPath.split(/[\\/\\\\]/).pop();
+
+          // Save to history (keep top 10)
+          const historyEntry = {
+            timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' }),
+            specPath,
+            specName,
+            baseUrl,
+            headers,
+            timeoutMs,
+            passed: message.result.passed
+          };
+
+          history.unshift(historyEntry);
+          if (history.length > 10) history.pop();
+
+          try {
+            vscode.setState({ history });
+          } catch (e) {}
+          renderHistoryDropdown();
 
           renderResults(message.result);
         }
