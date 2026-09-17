@@ -48,7 +48,7 @@
         {
           "id": "smile-sidebar",
           "title": "Smile: The Extension for API Contract Linting",
-          "icon": "icon.png"
+          "icon": "media/icon.png"
         }
       ]
     },
@@ -125,6 +125,11 @@
       {
         "command": "smile.installHook",
         "title": "Install Native Git Pre-Commit Hook",
+        "category": "Smile"
+      },
+      {
+        "command": "smile.uninstallHook",
+        "title": "Uninstall Native Git Pre-Commit Hook",
         "category": "Smile"
       }
     ],

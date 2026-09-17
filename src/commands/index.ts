@@ -190,18 +190,67 @@ export function registerCommands(
       }
 
       if (fs.existsSync(hookPath)) {
-        const overwrite = await vscode.window.showWarningMessage(
-          "Smile: A git pre-commit hook already exists. Overwrite it with Smile contract gate?",
+        const action = await vscode.window.showWarningMessage(
+          "Smile: A git pre-commit hook already exists.",
           "Overwrite",
+          "Remove Hook",
           "Cancel"
         );
-        if (overwrite !== "Overwrite") return;
+        if (action === "Remove Hook") {
+          try {
+            fs.unlinkSync(hookPath);
+            vscode.window.showInformationMessage("☺ Smile: Pre-commit hook removed successfully.");
+          } catch (err: any) {
+            vscode.window.showErrorMessage(`Smile: Failed to remove pre-commit hook: ${err?.message || err}`);
+          }
+          return;
+        }
+        if (action !== "Overwrite") return;
       }
 
-      const hookScript = `#!/bin/sh\n# smile pre-commit hook\n\necho "🩺 Running smile contract linter..."\nnpx @mrjacket/smile lint .\n\nif [ $? -ne 0 ]; then\n  echo ""\n  echo "❌ API contract violations found. Commit aborted."\n  echo "Please fix the errors or run 'npx @mrjacket/smile deduce <spec>' before committing."\n  exit 1\nfi\n`;
+      const hookScript = `#!/bin/sh\n# smile pre-commit hook\n\necho "🩺 Running smile contract linter..."\n\nif command -v smile >/dev/null 2>&1; then\n  smile lint .\nelse\n  npx --yes @mrjacket/smile lint .\nfi\n\nif [ $? -ne 0 ]; then\n  echo ""\n  echo "❌ API contract violations found. Commit aborted."\n  echo "Please fix the errors or run 'npx @mrjacket/smile deduce <spec>' before committing."\n  exit 1\nfi\n`;
 
       fs.writeFileSync(hookPath, hookScript, { encoding: "utf-8", mode: 0o755 });
       vscode.window.showInformationMessage("☺ Smile: Pre-commit hook installed! Git will now validate API contracts before every commit.");
+    }
+  );
+
+  // Command: Uninstall Native Git Pre-Commit Hook (smile uninstall-hook)
+  const uninstallHookCommand = vscode.commands.registerCommand(
+    "smile.uninstallHook",
+    async () => {
+      const workspaceFolders = vscode.workspace.workspaceFolders;
+      if (!workspaceFolders || workspaceFolders.length === 0) {
+        vscode.window.showErrorMessage("Smile: Open a workspace folder first to remove the pre-commit hook.");
+        return;
+      }
+
+      const rootDir = workspaceFolders[0].uri.fsPath;
+      const hookPath = path.join(rootDir, ".git", "hooks", "pre-commit");
+
+      if (!fs.existsSync(hookPath)) {
+        vscode.window.showInformationMessage("Smile: No pre-commit hook found in this repository.");
+        return;
+      }
+
+      const content = fs.readFileSync(hookPath, "utf-8");
+      const isSmileHook = content.includes("smile pre-commit hook") || content.includes("@mrjacket/smile");
+
+      if (!isSmileHook) {
+        const confirm = await vscode.window.showWarningMessage(
+          "Smile: The existing pre-commit hook was not created by Smile. Do you still want to remove it?",
+          "Remove Hook",
+          "Cancel"
+        );
+        if (confirm !== "Remove Hook") return;
+      }
+
+      try {
+        fs.unlinkSync(hookPath);
+        vscode.window.showInformationMessage("☺ Smile: Pre-commit hook removed successfully.");
+      } catch (err: any) {
+        vscode.window.showErrorMessage(`Smile: Failed to remove pre-commit hook: ${err?.message || err}`);
+      }
     }
   );
 
@@ -215,6 +264,7 @@ export function registerCommands(
     bundleSpecCommand,
     exportReportCommand,
     openInitWizardCommand,
-    installHookCommand
+    installHookCommand,
+    uninstallHookCommand
   );
 }

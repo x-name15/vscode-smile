@@ -100,6 +100,13 @@ export class SmileCommandsProvider implements vscode.TreeDataProvider<SmileComma
         "smile.installHook",
         "Git Hook: install native pre-commit hook that validates specifications before every commit."
       ),
+      new SmileCommandItem(
+        "Remove Git Hook",
+        "Uninstall Pre-Commit Gate",
+        new vscode.ThemeIcon("shield-slash"),
+        "smile.uninstallHook",
+        "Git Hook: remove native pre-commit hook from the repository."
+      ),
     ];
 
     return Promise.resolve(items);
